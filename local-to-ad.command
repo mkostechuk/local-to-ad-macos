@@ -13,7 +13,7 @@ sudo mkdir /Users/old
 sudo dscl . -change /Users/$OLD_USERNAME NFSHomeDirectory /Users/$OLD_USERNAME /Users/old
 sudo dscl . -change /Users/$NEW_USERNAME NFSHomeDirectory /Users/$NEW_USERNAME /Users/$OLD_USERNAME
 
-#change owner of the home folder and reset ACLs
+#change owner of the home folder
 sudo chown -R $NEW_USERNAME:LAZADA\\Domain\ Users /Users/$OLD_USERNAME
 #change owner of the /usr/local/ folder contents (used for brew)
 sudo chown -R $NEW_USERNAME:LAZADA\\Domain\ Users /usr/local/*
