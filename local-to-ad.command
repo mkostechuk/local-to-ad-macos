@@ -3,6 +3,7 @@
 #set usernames here
 OLD_USERNAME=olduser
 NEW_USERNAME=newuser
+DOMAIN=yourdomain
 
 #few visual checks before we begin
 dscl . -list /Users NFSHomeDirectory | grep "Users"
@@ -14,9 +15,9 @@ sudo dscl . -change /Users/$OLD_USERNAME NFSHomeDirectory /Users/$OLD_USERNAME /
 sudo dscl . -change /Users/$NEW_USERNAME NFSHomeDirectory /Users/$NEW_USERNAME /Users/$OLD_USERNAME
 
 #change owner of the home folder
-sudo chown -R $NEW_USERNAME:LAZADA\\Domain\ Users /Users/$OLD_USERNAME
+sudo chown -R $NEW_USERNAME:$DOMAIN\\Domain\ Users /Users/$OLD_USERNAME
 #change owner of the /usr/local/ folder contents (used for brew)
-sudo chown -R $NEW_USERNAME:LAZADA\\Domain\ Users /usr/local/*
+sudo chown -R $NEW_USERNAME:$DOMAIN\\Domain\ Users /usr/local/*
 
 #change owner of the apps
-find /Applications -type d -user $OLD_USERNAME -d 1 -exec sudo chown -R $NEW_USERNAME:LAZADA\\Domain\ Users {} \;
+find /Applications -type d -user $OLD_USERNAME -d 1 -exec sudo chown -R $NEW_USERNAME:$DOMAIN\\Domain\ Users {} \;
